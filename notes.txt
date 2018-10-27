@@ -1,0 +1,17 @@
+Add something:
+curl -XPOST 'http://localhost:9200/abc/def/1' -d '{ "title": "First Title", "body": "First Body" }' -H "Content-Type: application/json"
+
+Result:
+{"_index":"abc","_type":"def","_id":"1","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1}
+
+Query something:
+curl -XGET 'http://localhost:9200/abc/def/1'
+
+Result:
+{"_index":"abc","_type":"def","_id":"1","_version":1,"found":true,"_source":{ "title": "First Title", "body": "First Body" }}
+
+Delete something:
+curl -XDELETE 'http://localhost:9200/abc/def/1'
+
+Result:
+{"_index":"abc","_type":"def","_id":"1","_version":3,"result":"deleted","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":2,"_primary_term":1}
